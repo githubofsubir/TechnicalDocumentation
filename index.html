@@ -1,0 +1,218 @@
+<!-- Functional App to build Technical Documentation Page -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <title>Technical Documentatio of JS Function</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <nav id="navbar">
+      <header>Documentation on JS-Function </header>
+      <ul>
+        <li><a class="nav-link" href="#Introduction_to_Function">Introduction to Function</a></li>
+        <li>
+          <a class="nav-link" href="#Defining_Function"
+            >Defining Function</a
+          >
+        </li>
+        <li>
+          <a class="nav-link" href="#Calling_Function"
+            >Calling Function</a
+          >
+        </li>
+
+        <li>
+          <a class="nav-link" href="#Function_scope"
+            >Function scope</a
+          >
+        </li>
+        <li><a class="nav-link" href="#Scope_and_the_function_stack">Scope and the function stack</a></li>
+        <li><a class="nav-link" href="#Reference">Reference</a></li>
+      </ul>
+    </nav>
+
+    <main id="main-doc">
+      <section class="main-section" id="Introduction_to_Function">
+        <header>Introduction to Function</header>
+        <article>
+          <p>
+            Generally speaking, a function is a "subprogram" that can be called by code external (or internal, in the case of recursion) to the function. Like the program itself, a function is composed of a sequence of statements called the function body. Values can be passed to a function as parameters, and the function will return a value.
+          </p>
+          <p>
+            In JavaScript, functions are first-class objects, because they can be passed to other functions, returned from functions, and assigned to variables and properties. They can also have properties and methods just like any other object. What distinguishes them from other objects is that functions can be called.
+          </p>
+          <p>
+            By default, if a function's execution doesn't end at a return statement, or if the return keyword doesn't have an expression after it, then the return value is undefined. The return statement allows you to return an arbitrary value from the function. One function call can only return one value, but you can simulate the effect of returning multiple values by returning an object or array and destructuring the result.
+          </p>
+        </article>
+      </section>
+
+      <section class="main-section" id="Defining_Function">
+        <header>Defining Function</header>
+        <p>
+          <p>Function declarations</p>
+          <p>
+            A function definition (also called a function declaration, or function statement) consists of the function keyword, followed by:
+            <ul>
+              <li>The name of the function.</li>
+              <li>A list of parameters to the function, enclosed in parentheses and separated by commas.</li>
+              <li>The JavaScript statements that define the function, enclosed in curly braces, { /* … */ }.</li>
+            </ul>
+          </p>
+
+          <p>Function expressions</p>
+          <ul>
+          <li>
+            While the function declaration is syntactically a statement, functions can also be created by a function expression.
+          </li>
+          <li>
+            Such a function can be anonymous; it does not have to have a name.
+          </li>  
+          <li>
+            However, a name can be provided with a function expression. Providing a name allows the function to refer to itself, and also makes it easier to identify the function in a debugger's stack traces.
+          </li>  
+          <li>
+            Function expressions are convenient when passing a function as an argument to another function. For example,  a map function that should receive a function as first argument and an array as second argument.
+          </li>
+          <p>
+          <code>function map(f, a)
+            {const result = new Array(a.length); for (let i = 0; i < a.length; i++) {result[i] = f(a[i]);} return result}
+          </code>
+          </p>
+          <li>
+            In JavaScript, a function can be defined based on a condition.
+          </li>
+          <li>A method is a function that is a property of an object.</li>
+          </ul>
+  
+        </p>
+      </section>
+
+
+      <section class="main-section" id="Calling_Function">
+        <header>Calling Function</header>
+        <p>
+          Defining a function does not execute it. Defining it names the function and specifies what to do when the function is called.
+        </p>  
+        <p>
+          Calling the function actually performs the specified actions with the indicated parameters. For example, if you define the function square, you could call it as follows:
+        </p>  
+        <code>square(5);</code>
+        <p>The preceding statement calls the function with an argument of 5. The function executes its statements and returns the value 25.</p>
+        <p>
+          Functions must be in scope when they are called, but the function declaration can be hoisted (appear below the call in the code). The scope of a function declaration is the function in which it is declared (or the entire program, if it is declared at the top level).
+        </p>
+        <p>
+          The arguments of a function are not limited to strings and numbers. You can pass whole objects to a function. The showProps() function (defined in Working with objects) is an example of a function that takes an object as an argument.
+        </p>  
+        <p>A function can call itself. For example, here is a function that computes factorials recursively:
+        </p>
+        <code>function factorial(n) { if (n === 0 || n === 1) { return 1; } else { return n * factorial(n - 1);} }
+        </code>
+
+        <p>
+          There are other ways to call functions. There are often cases where a function needs to be called dynamically, or the number of arguments to a function vary, or in which the context of the function call needs to be set to a specific object determined at runtime.
+        </p>  
+        <p>It turns out that functions are themselves objects — and in turn, these objects have methods.</p>
+
+        <p>Function hoisting</p>
+        <p>consider the example below:</p>
+        <p><code>console.log(square(5)); // 25</code></p>
+        <p><code>function square(n) {return n * n;}</code></p>
+        <p>This code runs without any error, despite the square() function being called before it's declared. This is because the JavaScript interpreter hoists the entire function declaration to the top of the current scope.</p>
+        <p>Function hoisting only works with function declarations — not with function expressions.</p>
+        
+      </section>
+      <section class="main-section" id="Function_scope">
+        <header>Function scope</header>
+        <p>Variables defined inside a function cannot be accessed from anywhere outside the function, because the variable is defined only in the scope of the function. However, a function can access all variables and functions defined inside the scope in which it is defined.
+        </p>
+        <p>In other words, a function defined in the global scope can access all variables defined in the global scope. A function defined inside another function can also access all variables defined in its parent function, and any other variables to which the parent function has access.
+        </p>
+      </section>
+
+      <section class="main-section" id="Scope_and_the_function_stack">
+        <header>Scope and the function stack</header>
+        <p>
+          <p>Recursion</p>
+          <p>A function can refer to and call itself. There are three ways for a function to refer to itself:
+            <ol>
+              <li>The function's name</li>
+              <li>arguments.callee</li>
+              <li>An in-scope variable that refers to the function</li>
+            </ol>  
+            <p>For example, consider the following function definition:</p>
+            <code>const foo = function bar() {
+  // statements go here
+};
+            </code>
+            <p>Within the function body, the following are all equivalent:
+              <ol>
+                <li>bar()</li>
+                <li>arguments.callee()</li>
+                <li>foo()</li>
+              </ol>
+            </p> 
+            <p>
+              A function that calls itself is called a recursive function. In some ways, recursion is analogous to a loop. Both execute the same code multiple times, and both require a condition (to avoid an infinite loop, or rather, infinite recursion in this case).
+            </p>  
+            <p>
+              For example, consider the following loop:
+            </p> 
+            <code>
+              let x = 0;
+// "x < 10" is the loop condition
+while (x < 10) {
+  // do stuff
+  x++;
+}
+            </code> 
+            <p>
+              It can be converted into a recursive function declaration, followed by a call to that function:
+            </p>     
+            <p>
+              <code>
+                function loop(x) {
+                // "x >= 10" is the exit condition (equivalent to "!(x < 10)")
+                if (x >= 10) {return;}
+                // do stuff
+                loop(x + 1); // the recursive call} loop(0);</code>
+   
+            </p> 
+            <p>
+              Compared to the function loop, each recursive call itself makes many recursive calls here.
+            </p>   
+            <p>
+              It is possible to convert any recursive algorithm to a non-recursive one, but the logic is often much more complex, and doing so requires the use of a stack.
+            </p>  
+            <p>
+              In fact, recursion itself uses a stack: the function stack. 
+            </p>  
+          </p>
+        </p>
+      </section>
+
+      <section class="main-section" id="Reference">
+        <header>Reference</header>
+        <article>
+          <ul>
+            <li>
+              All the documentation in this page is taken from
+              <a
+                href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide"
+                target="_blank"
+                >MDN</a
+              >
+            </li>
+          </ul>
+        </article>
+      </section>
+    </main>
+
+  </body>
+ </html   
+
